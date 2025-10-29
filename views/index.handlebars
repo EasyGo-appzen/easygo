@@ -1,0 +1,131 @@
+<div class="upload-container">
+    <form id="uploadForm" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="csvFile" class="form-label">📁 Upload CSV Files (Multiple files for comparison)</label>
+            <input class="form-control" type="file" id="csvFile" name="csvFile" accept=".csv" multiple>
+            <div class="form-text">
+                Upload one or more CSV files. Multiple files will be compared side by side.<br>
+                <small><kbd>`</kbd> to choose files | <kbd>Enter</kbd> to upload</small>
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            <label for="themeSelector" class="form-label">🎨 Select Color Theme</label>
+            <select class="form-select" id="themeSelector">
+                <option value="default" selected>🌟 Default (Neon Green/Red)</option>
+                <option value="vibrant">💎 Vibrant (Cyan/Pink/Amber)</option>
+                <option value="tropical">🌴 Tropical (Teal/Coral/Yellow)</option>
+                <option value="ocean">🌊 Ocean (Turquoise/Coral/Gold)</option>
+                <option value="sunset">🌅 Sunset (Sage/Fuchsia/Tangerine)</option>
+                <option value="neon">⚡ Neon (Lime/Magenta/Yellow)</option>
+                <option value="galaxy">🌌 Galaxy (Aqua/Magenta/Gold)</option>
+                <option value="aurora">✨ Aurora (Green/Red/Peach)</option>
+                <option value="candy">🍬 Candy (Mint/Pink/Orange)</option>
+                <option value="fire">🔥 Fire (Lime/Crimson/Orange)</option>
+                <option value="ice">❄️ Ice (Cyan/Berry/Gold)</option>
+                <option value="forest">🌲 Forest (Green/Berry/Autumn)</option>
+            </select>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">
+            <span id="loadingIndicator" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+            Upload & Visualize
+        </button>
+    </form>
+</div>
+
+<!-- Model Search Section -->
+<div class="chart-container" id="searchContainer" style="display: none;">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="h5 mb-0">🔍 Model Search & Filter</h2>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <input type="text" class="form-control" id="modelSearch" placeholder="Search for a model...">
+            </div>
+            <div id="searchResults"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Stacked Bar Chart -->
+<div class="chart-container">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <div>
+                <h2 class="h5 mb-0">📊 Reimbursement by Model and CVM Analysis</h2>
+                <small class="text-white-50" style="font-size: 0.75rem;">
+                    <i class="bi bi-info-circle"></i> Click on any bar to show all CVM details | Click again to hide
+                </small>
+            </div>
+        </div>
+        <div class="card-body">
+            <div id="chart" style="width: 100%; min-height: 600px;"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Line Chart -->
+<div class="chart-container">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <div>
+                <h2 class="h5 mb-0">📈 TPOS vs FPOS Comparison</h2>
+                <small class="text-white-50" style="font-size: 0.75rem;">
+                    <i class="bi bi-graph-up"></i> Line chart showing the trend comparison
+                </small>
+            </div>
+        </div>
+        <div class="card-body">
+            <div id="lineChart" style="width: 100%; min-height: 500px;"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Pie Chart Section -->
+<div class="chart-container" id="pieContainer" style="display: none;">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="h5 mb-0">🥧 CVM Type Distribution</h2>
+            <small class="text-white-50" style="font-size: 0.75rem;">
+                <i class="bi bi-pie-chart"></i> Percentage breakdown of all CVM types
+            </small>
+        </div>
+        <div class="card-body">
+            <div id="pieChart" style="width: 100%; min-height: 500px;"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Model Comparison Section -->
+<div class="chart-container" id="comparisonContainer" style="display: none;">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="h5 mb-0">📋 Model Comparison Table</h2>
+            <small class="text-white-50" style="font-size: 0.75rem;">
+                <i class="bi bi-table"></i> Side-by-side comparison of all models
+            </small>
+        </div>
+        <div class="card-body">
+            <div id="comparisonTable" style="overflow-x: auto;"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Top 3 Expense Types Section -->
+<div class="chart-container" id="expenseTypesContainer" style="display: none;">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="h5 mb-0">💰 Top 3 Expense Types by Model</h2>
+            <small class="text-white-50" style="font-size: 0.75rem;">
+                <i class="bi bi-cash-stack"></i> TPOS count and reimbursement amount for each model
+            </small>
+        </div>
+        <div class="card-body">
+            <div id="expenseTypesTable" style="overflow-x: auto;"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Rest of your existing HTML... -->
